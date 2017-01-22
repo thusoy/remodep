@@ -1,0 +1,12 @@
+#!/bin/sh
+
+main () {
+    create_virtualenv
+}
+
+create_virtualenv () {
+    test -d venv || virtualenv venv
+    ./venv/bin/pip install -e .[test]
+}
+
+main
