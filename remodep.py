@@ -8,7 +8,6 @@ Prints nothing if the module isn't loaded
 from __future__ import print_function
 
 import argparse
-import subprocess
 
 
 def main():
@@ -40,16 +39,20 @@ def get_reverse_module_dependencies(target_module, module_tree=None):
 
 
 def get_current_modules():
-    lsmod = ['lsmod']
     modules = {}
-    for line in subprocess.check_output(lsmod).split('\n')[1:]:
-        if not line:
-            continue
-        line_parts = line.split()
-        module = line_parts[0]
-        dependents = line_parts[3].split(',') if len(line_parts) == 4 else []
-        modules[module] = dependents
+    with open(get_modules_file_path()) as fh:
+        for line in fh:
+            if not line:
+                continue
+            line_parts = line.split()
+            module = line_parts[0]
+            dependents = line_parts[3].split(',') if line_parts[3] != '-' else []
+            modules[module] = dependents
     return modules
+
+
+def get_modules_file_path():
+    return '/proc/modules'
 
 
 def unique(iterable):
