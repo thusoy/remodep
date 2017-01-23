@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from setuptools import setup, find_packages
+import fastentrypoints # Ensures fast startup
 import sys
 
 install_requires = []
