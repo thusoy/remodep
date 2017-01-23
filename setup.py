@@ -28,7 +28,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'poff = remodep:cli_entry',
+            'remodep = remodep:main',
         ],
     },
     classifiers=[
