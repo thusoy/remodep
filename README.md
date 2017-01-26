@@ -1,4 +1,4 @@
-# remodep
+# remodep [![Build Status](https://travis-ci.org/thusoy/remodep.svg?branch=master)](https://travis-ci.org/thusoy/remodep)
 
 List reverse kernel module dependencies for loaded modules.
 
